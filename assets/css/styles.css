@@ -102,7 +102,16 @@ header ul {
   display: flex;
   align-items: center;
   gap: .5rem;
-  padding: 0.45rem .9rem 0.45rem 0.45rem;
+  padding: 0;
+}
+
+.header__branding img {
+  padding-inline-start: 0.45rem;
+}
+
+.header__branding span {
+  padding-block: .45rem;
+  padding-inline-end: .9rem;
 }
 
 .header__cta,
