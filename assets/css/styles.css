@@ -1,0 +1,130 @@
+:root {
+  --vmax: max(100vw, 100vh);
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    --bg: 0 0% 95%;
+    --bg2: 0 0% 100%;
+    --bg3: 0 0% 90%;
+    --border: 0 0% 85%;
+    --fg: 0 0% 15%;
+    --solid: 0 0% 100%;
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: 0 0% 15%;
+    --bg2: 0 0% 25%;
+    --bg3: 0 0% 35%;
+    --border: 0 0% 35%;
+    --fg: 0 0% 95%;
+    --solid: 0 0% 0%;
+  }
+}
+
+@font-face {
+  font-family: "Poppins";
+  src: url("/fonts/Poppins/Poppins-Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Poppins";
+  src: url("/fonts/Poppins/Poppins-Bold.ttf") format("truetype");
+  font-weight: 700;
+  font-style: normal;
+}
+
+body {
+  background-color: hsl(var(--bg));
+  color: hsl(var(--fg));
+  font-family: "Poppins", serif;
+}
+
+.container {
+  max-width: 625px;
+  margin-inline: auto;
+  padding: 0 1rem;
+}
+
+header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  position: sticky;
+  inset: 0 0 auto 0;
+  padding-block: .5rem;
+  background-color: hsl(var(--bg));
+}
+
+header a {
+  color: hsl(var(--fg));
+  text-decoration: none;
+  display: inline-block;
+  border: 1px solid transparent;
+  border-radius: var(--vmax);
+  padding: 0.45rem .9rem;
+  cursor: pointer;
+  transition: all 500ms cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+header a.active,
+header a:active,
+header a:focus,
+header a:hover {
+  background-color: hsl(var(--fg));
+  border-color: hsl(var(--fg));
+  color: hsl(var(--bg));
+  outline: none;
+}
+
+header a:active {
+  border-color: transparent;
+  transform: scale(0.95);
+}
+
+header ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  gap: 3px;
+  text-transform: uppercase;
+  font-size: .85rem;
+}
+
+.header__branding {
+  display: flex;
+  align-items: center;
+  gap: .5rem;
+  padding: 0.45rem .9rem 0.45rem 0.45rem;
+}
+
+.header__cta,
+.header__branding {
+  background-color: hsl(var(--bg));
+}
+
+.header__cta a {
+  display: flex;
+  align-items: center;
+  gap: .3rem;
+}
+
+.pill {
+  background-color: hsl(var(--bg2));
+  border-radius: var(--vmax);
+  border: 1px solid hsl(var(--border));
+  padding: 3px;
+  box-shadow: 0 0 0.5rem -0.25 hsla(var(--solid) / 0.75);
+}
+
+.header__branding img {
+  width: 1.5rem;
+  height: 1.5rem;
+}
