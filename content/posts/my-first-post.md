@@ -3,7 +3,7 @@ title = 'My First Post'
 date = 2023-12-22T00:41:34+02:00
 tags = ["yo", "yo yo"]
 categories = ["yo", "yo yo"]
-draft = true
+draft = false
 +++
 
 ## Introduction

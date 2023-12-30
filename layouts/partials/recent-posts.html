@@ -1,0 +1,14 @@
+{{ define "main" }}
+
+<h2>Recent Posts</h2>
+
+<ul>
+  {{ range (where .Site.RegularPages "Section" "posts").ByDate.Reverse  }}
+    <li>
+      <a href="{{ .Permalink }}">{{ .Title }}</a>
+    <span>{{ index .Params.categories 0 }}</span>
+    </li>
+  {{ end }}
+</ul>
+
+{{ end }}
