@@ -1,7 +1,7 @@
 +++
 title = 'My First Post'
 date = 2023-12-22T00:41:34+02:00
-draft = true
+draft = false
 +++
 
 this is the index page

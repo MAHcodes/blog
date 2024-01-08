@@ -2,12 +2,16 @@
 
 <h2>Recent Posts</h2>
 
-<ul>
-  {{ range (where .Site.RegularPages "Section" "posts").ByDate.Reverse  }}
-    <li>
-      <a href="{{ .Permalink }}">{{ .Title }}</a>
-    <span>{{ index .Params.categories 0 }}</span>
-    </li>
+<ul class="posts">
+  {{ range (where .Site.RegularPages "Section" "posts").ByDate.Reverse }}
+  <li>
+    <a class="posts__title" href="{{ .Permalink }}">
+      <span>{{ .Title }}</span>
+    </a>
+    {{ if .Params.categories }} {{ $category := index .Params.categories 0 }}
+    <a class="posts__category" href="/categories/{{ urlize $category }}">{{ $category }}</a>
+    {{ end }}
+  </li>
   {{ end }}
 </ul>
 

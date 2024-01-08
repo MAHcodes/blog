@@ -1,0 +1,13 @@
+{{ with site.Menus.main }}
+  <nav class="pill">
+    <ul>
+      {{ range . }}
+      <li>
+        <a class="{{ cond ($.IsMenuCurrent .Menu .) `active` `` }}" href="{{ .URL }}">
+          {{ .Name }}
+        </a>
+      </li>
+      {{ end }}
+    </ul>
+  </nav>
+{{ end }}

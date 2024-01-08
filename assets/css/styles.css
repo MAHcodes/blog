@@ -1,5 +1,7 @@
 :root {
   --vmax: max(100vw, 100vh);
+  --transition-duration: 150ms;
+  --transition-timing-function: ease-out;
 }
 
 @media (prefers-color-scheme: light) {
@@ -38,6 +40,11 @@
   font-style: normal;
 }
 
+*::selection {
+  background-color: hsl(var(--fg));
+  color: hsl(var(--bg));
+}
+
 body {
   background-color: hsl(var(--bg));
   color: hsl(var(--fg));
@@ -69,19 +76,24 @@ header a {
   border-radius: var(--vmax);
   padding: 0.45rem .9rem;
   cursor: pointer;
-  transition: all 150ms ease-in;
+  transition: background-color var(--transition-duration) var(--transition-timing-function),
+    color var(--transition-duration) var(--transition-timing-function),
+    border-color var(--transition-duration) var(--transition-timing-function);
 }
 
-header a.active,
 header a:active,
 header a:focus,
-header a:hover {
+header a:hover,
+ul.posts .posts__title:active span,
+ul.posts li .posts__category:active {
   background-color: hsl(var(--fg));
   border-color: hsl(var(--fg));
   color: hsl(var(--bg));
   outline: none;
 }
 
+ul.posts .posts__title:active span,
+ul.posts li .posts__category:active,
 header a:active {
   border-color: transparent;
   transform: scale(0.95);
@@ -125,6 +137,7 @@ header ul {
   gap: .3rem;
 }
 
+/* TODO: fix wrapping lines for long titles */
 .pill {
   background-color: hsl(var(--bg2));
   border-radius: var(--vmax);
@@ -136,4 +149,67 @@ header ul {
 .header__branding img {
   width: 1.5rem;
   height: 1.5rem;
+}
+
+ul.posts {
+  display: flex;
+  flex-direction: column;
+  padding-inline-start: 0;
+  gap: 0.5rem;
+  margin-inline: -0.9rem;
+}
+
+ul.posts li {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+ul.posts .posts__title {
+  flex: 1;
+}
+
+ul.posts li:hover::before {
+  background-color: hsl(var(--fg));
+}
+
+ul.posts li::before {
+  content: "";
+  position: absolute;
+  height: 1px;
+  inset: auto 1rem auto 1rem;
+  background-color: hsl(var(--border));
+  transition: background-color var(--transition-duration) var(--transition-timing-function);
+}
+
+ul.posts li a {
+  text-decoration: none;
+}
+
+ul.posts .posts__title span {
+  display: inline-block;
+}
+
+ul.posts .posts__title span,
+ul.posts li .posts__category {
+  position: relative;
+  background-color: hsl(var(--bg));
+  color: hsl(var(--fg));
+  padding: 0.45rem .9rem;
+  border-radius: var(--vmax);
+  border: 1px solid transparent;
+  transition: border-color var(--transition-duration) var(--transition-timing-function),
+    color var(--transition-duration) var(--transition-timing-function),
+    background-color var(--transition-duration) var(--transition-timing-function),
+    transform var(--transition-duration) var(--transition-timing-function);
+}
+
+ul.posts li a:focus {
+  outline: none;
+}
+
+ul.posts .posts__title:hover span,
+ul.posts li .posts__category:hover {
+  border-color: hsl(var(--fg));
 }

@@ -4,19 +4,7 @@
     <span>{{ .Site.Title }}</span>
   </a>
 
-  {{ with site.Menus.main }}
-  <nav class="pill">
-    <ul>
-      {{ range . }}
-      <li>
-        <a class="{{ cond ($.IsMenuCurrent .Menu .) `active` `` }}" href="{{ .URL }}">
-          {{ .Name }}
-        </a>
-      </li>
-      {{ end }}
-    </ul>
-  </nav>
-  {{ end }}
+  {{ partial "nav.html" . }}
 
   <div class="header__cta">
     <a href="#" target="_blank" rel="noopener noreferrer">
